@@ -1,0 +1,35 @@
+# Build ve derleme dosyaları
+bin/
+obj/
+
+# Visual Studio dosyaları
+.vs/
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+# Rider veya diğer IDE'ler
+.idea/
+
+# MacOS özel dosyaları
+.DS_Store
+
+# Log ve debug dosyaları
+*.log
+*.tlog
+*.cache
+*.pdb
+
+# Publish ve paketler
+*.nupkg
+*.publish.xml
+*.zip
+
+# Secret / lokal config dosyaları
+appsettings.Development.json
+launchSettings.json
+
+# Node / npm dosyaları varsa (frontend)
+node_modules/
+

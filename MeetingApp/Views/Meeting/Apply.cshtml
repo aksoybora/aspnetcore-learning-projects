@@ -1,0 +1,84 @@
+@model UserInfo
+@{
+    ViewBag.Title = "Başvuru Formu";
+    Layout = "_Layout2";
+}
+
+<!-- Hero Section -->
+<div class="hero-section fade-in">
+    <div class="container">
+        <h1 class="hero-title">Toplantı Katılım Formu</h1>
+        <p class="hero-subtitle">Toplantıya katılım durumunuzu bildirin ve topluluğumuza katılın</p>
+    </div>
+</div>
+
+<main class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-8 col-lg-6">
+            <div class="form-container slide-in-left">
+                <div class="text-center mb-4">
+                    <i class="fas fa-clipboard-list fa-3x text-primary mb-3"></i>
+                    <h2 class="h3">Katılım Bilgileri</h2>
+                    <p class="text-muted">Lütfen aşağıdaki bilgileri eksiksiz doldurun</p>
+                </div>
+
+                <form method="post" action="/Meeting/Apply" novalidate>
+                    <div asp-validation-summary="All" class="alert alert-danger"></div>
+                    
+                    <div class="mb-4">
+                        <label asp-for="Name" class="form-label fw-bold">
+                            <i class="fas fa-user me-2 text-primary"></i>Ad Soyad
+                        </label>
+                        <input asp-for="Name" class="form-control" placeholder="Adınız ve soyadınızı girin">
+                        <span asp-validation-for="Name" class="text-danger small"></span>
+                    </div>
+                    
+                    <div class="mb-4">
+                        <label asp-for="Phone" class="form-label fw-bold">
+                            <i class="fas fa-phone me-2 text-primary"></i>Telefon
+                        </label>
+                        <input asp-for="Phone" class="form-control" placeholder="Telefon numaranızı girin">
+                        <span asp-validation-for="Phone" class="text-danger small"></span>
+                    </div>
+                    
+                    <div class="mb-4">
+                        <label asp-for="Email" class="form-label fw-bold">
+                            <i class="fas fa-envelope me-2 text-primary"></i>E-posta
+                        </label>
+                        <input asp-for="Email" class="form-control" placeholder="E-posta adresinizi girin">
+                        <span asp-validation-for="Email" class="text-danger small"></span>
+                    </div>
+                    
+                    <div class="mb-4">
+                        <label asp-for="WillAttend" class="form-label fw-bold">
+                            <i class="fas fa-question-circle me-2 text-primary"></i>Katılım Durumu
+                        </label>
+                        <select asp-for="WillAttend" class="form-select">
+                            <option value="">Seçiniz</option>
+                            <option value="true">
+                                <i class="fas fa-check-circle text-success"></i> Evet, Geliyorum
+                            </option>
+                            <option value="false">
+                                <i class="fas fa-times-circle text-danger"></i> Hayır, Gelmiyorum
+                            </option>
+                        </select>
+                        <span asp-validation-for="WillAttend" class="text-danger small"></span>
+                    </div>
+                    
+                    <div class="d-grid gap-2">
+                        <button class="btn btn-custom btn-lg" type="submit">
+                            <i class="fas fa-paper-plane me-2"></i>
+                            Başvuruyu Gönder
+                        </button>
+                    </div>
+                </form>
+                
+                <div class="text-center mt-4">
+                    <a href="/" class="btn btn-outline-secondary">
+                        <i class="fas fa-arrow-left me-2"></i>Ana Sayfaya Dön
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>

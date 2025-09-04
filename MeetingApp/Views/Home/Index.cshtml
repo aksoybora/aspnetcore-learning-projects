@@ -1,0 +1,161 @@
+@model MeetingInfo
+@{
+    ViewBag.Title = "Toplantı Başvuru";
+    Layout = "_Layout2";
+}
+
+<!-- Hero Section -->
+<div class="hero-section fade-in">
+    <div class="container">
+        <h1 class="hero-title">@ViewData["Selamlama"]</h1>
+        <p class="hero-subtitle">Toplantı katılım durumunuzu bildiriniz ve topluluğumuza katılın!</p>
+    </div>
+</div>
+
+<main class="container">
+    <!-- Stats Cards -->
+    <div class="stats-container slide-in-left">
+        <div class="stat-card">
+            <div class="stat-number">@Model.NumberOfPeople</div>
+            <div class="stat-label">Katılımcı</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-number">@Model.Date.ToString("dd")</div>
+            <div class="stat-label">Gün</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-number">@Model.Date.ToString("HH")</div>
+            <div class="stat-label">Saat</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-number">@Model.Date.ToString("MM")</div>
+            <div class="stat-label">Ay</div>
+        </div>
+    </div>
+
+    <!-- Meeting Info Card -->
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="meeting-card card">
+                <div class="card-body text-center">
+                    <h2 class="card-title mb-4">
+                        <i class="fas fa-calendar-alt text-primary me-2"></i>
+                        Toplantı Detayları
+                    </h2>
+                    
+                    <div class="row text-start">
+                        <div class="col-md-6 mb-3">
+                            <div class="d-flex align-items-center">
+                                <i class="fas fa-map-marker-alt text-danger me-3 fa-lg"></i>
+                                <div>
+                                    <strong>Yer:</strong><br>
+                                    <span class="text-muted">@Model.Location</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="col-md-6 mb-3">
+                            <div class="d-flex align-items-center">
+                                <i class="fas fa-clock text-warning me-3 fa-lg"></i>
+                                <div>
+                                    <strong>Tarih & Saat:</strong><br>
+                                    <span class="text-muted">@Model.Date.ToString("dd MMMM yyyy, dddd HH:mm")</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="mt-4">
+                        <a class="btn btn-custom btn-lg" asp-controller="Meeting" asp-action="Apply">
+                            <i class="fas fa-user-plus me-2"></i>
+                            Başvuru Yap
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- YENİ: Favori Katılımcılar -->
+    @if (ViewData["Favorites"] is List<UserInfo> favorites && favorites.Any())
+    {
+        <div class="row justify-content-center mt-5">
+            <div class="col-md-10">
+                <div class="card meeting-card">
+                    <div class="card-body">
+                        <h3 class="card-title text-center mb-4">
+                            <i class="fas fa-star text-warning me-2"></i>
+                            Favori Katılımcılar
+                        </h3>
+                        <div class="row">
+                            @foreach (var user in favorites.Take(3))
+                            {
+                                <div class="col-md-4 mb-3">
+                                    <div class="user-card text-center">
+                                        <div class="mb-2">
+                                            <i class="fas fa-user-circle fa-2x"></i>
+                                        </div>
+                                        <h5 class="mb-1">@user.Name</h5>
+                                        <small class="d-block mb-2">@user.Email</small>
+                                        <span class="badge bg-light text-dark">
+                                            @(user.WillAttend == true ? "Katılıyor" : 
+                                              user.WillAttend == false ? "Katılmıyor" : "Belirsiz")
+                                        </span>
+                                        @if (!string.IsNullOrEmpty(user.Note))
+                                        {
+                                            <div class="mt-2">
+                                                <small class="text-light opacity-75">@user.Note</small>
+                                            </div>
+                                        }
+                                    </div>
+                                </div>
+                            }
+                        </div>
+                        <div class="text-center mt-3">
+                            <a href="/home/favorites" class="btn btn-outline-warning">
+                                <i class="fas fa-star me-2"></i>Tüm Favorileri Gör
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+
+    <!-- Quick Actions -->
+    <div class="row justify-content-center mt-5">
+        <div class="col-md-10">
+            <div class="card meeting-card">
+                <div class="card-body text-center">
+                    <h3 class="card-title mb-4">Hızlı İşlemler</h3>
+                    <div class="row">
+                        <div class="col-md-3 mb-3">
+                            <a class="btn btn-outline-primary w-100" asp-controller="Meeting" asp-action="List">
+                                <i class="fas fa-users me-2"></i>
+                                Katılımcı Listesi
+                            </a>
+                        </div>
+                        <div class="col-md-3 mb-3">
+                            <a class="btn btn-outline-success w-100" asp-controller="Meeting" asp-action="Apply">
+                                <i class="fas fa-edit me-2"></i>
+                                Başvuru Düzenle
+                            </a>
+                        </div>
+                        <div class="col-md-3 mb-3">
+                            <a class="btn btn-outline-warning w-100" asp-controller="Home" asp-action="Statistics">
+                                <i class="fas fa-chart-bar me-2"></i>
+                                İstatistikler
+                            </a>
+                        </div>
+                        <div class="col-md-3 mb-3">
+                            <a class="btn btn-outline-info w-100" href="#">
+                                <i class="fas fa-info-circle me-2"></i>
+                                Yardım
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>

@@ -1,0 +1,16 @@
+@model Product
+
+
+<div class="row justify-content-center">
+    <div class="col-lg-8">
+        <div class="card card-body">
+            <h5 class="mb-3">Silme Onayı</h5>
+            <p class="mb-3"><strong>@Model.Name</strong> isimli ürünü silmek istiyor musunuz?</p>
+            <form action="" method="post" class="d-flex gap-2">
+                <input type="hidden" asp-for="@Model.ProductId">
+                <button type="submit" class="btn btn-danger">Evet</button>
+                <a href="/" class="btn btn-outline-secondary">Hayır</a>
+            </form>
+        </div>
+    </div>
+</div>

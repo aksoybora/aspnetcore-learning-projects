@@ -1,0 +1,98 @@
+html {
+  font-size: 14px;
+}
+
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+.btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
+  box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
+}
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+  margin-bottom: 60px;
+}
+
+.form-floating > .form-control-plaintext::placeholder, .form-floating > .form-control::placeholder {
+  color: var(--bs-secondary-color);
+  text-align: end;
+}
+
+.form-floating > .form-control-plaintext:focus::placeholder, .form-floating > .form-control:focus::placeholder {
+  text-align: start;
+}
+
+/* Theme variables */
+:root {
+  --app-bg: linear-gradient(180deg, #f7fbff 0%, #eef5ff 100%);
+  --app-surface: #ffffff;
+  --app-text: #1f2937;
+  --app-muted: #6b7280;
+  --app-border: #e5e7eb;
+  --app-primary: #2563eb; /* matches bootstrap primary-ish */
+  --app-card-shadow: 0 8px 20px rgba(0,0,0,0.06);
+}
+
+[data-theme="dark"] {
+  --app-bg: linear-gradient(180deg, #0b1220 0%, #0e1726 100%);
+  --app-surface: #111827;
+  --app-text: #e5e7eb;
+  --app-muted: #9ca3af;
+  --app-border: #374151;
+  --app-card-shadow: 0 8px 20px rgba(0,0,0,0.4);
+}
+
+body {
+  background: var(--app-bg);
+  color: var(--app-text);
+}
+
+.navbar {
+  backdrop-filter: saturate(120%) blur(6px);
+}
+
+.card {
+  border: 1px solid var(--app-border);
+  background-color: var(--app-surface);
+  box-shadow: var(--app-card-shadow);
+  border-radius: 12px;
+}
+
+.table {
+  border-color: var(--app-border);
+}
+
+.table-hover tbody tr:hover {
+  background-color: rgba(37, 99, 235, 0.06);
+}
+
+.img-thumb {
+  width: 84px;
+  height: 84px;
+  object-fit: cover;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+}
+
+.theme-toggle-btn {
+  border: 1px solid var(--app-border);
+  background-color: var(--app-surface);
+  color: var(--app-text);
+}
+
+.form-label, .form-check-label {
+  color: var(--app-text);
+}
+
+.alert-validation {
+  border: 1px solid var(--app-border);
+  background-color: rgba(220, 38, 38, 0.06);
+}

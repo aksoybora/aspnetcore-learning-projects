@@ -25,7 +25,7 @@
                 <td>@Html.DisplayFor(modelItem => item.OgrenciSoyad)</td>
                 <td style="width: 200px;">
                     <a asp-controller="Ogrenci" asp-action="Edit" asp-route-id="@item.OgrenciId" style="width: 100px; background-color: #CAE8BD" class="btn btn-sm btn-hover">Güncelle</a>
-                    <a href="#" style="width: 75px; background-color: #FFC7A7" class="btn btn-sm">Sil</a>
+                    <a asp-controller="Ogrenci" asp-action="Delete" asp-route-id="@item.OgrenciId" style="width: 75px; background-color: #FFC7A7" class="btn btn-sm">Sil</a>
                 </td>
             </tr>
         }

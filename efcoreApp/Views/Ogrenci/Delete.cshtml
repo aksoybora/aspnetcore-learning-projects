@@ -1,0 +1,21 @@
+@model Ogrenci
+
+@{
+    ViewData["Title"] = "Öğrenci Sil";
+}
+
+<div class="row">
+    <div class="col-8 mx-auto">
+        <p>
+            <h2>Öğrenci Sil</h2>
+            <hr>
+            <b>@Model.OgrenciAd @Model.OgrenciSoyad isimli öğrenciyi silmek istiyor musunuz?</b>
+
+            <form asp-action="Delete" asp-controller="Ogrenci" method="post" class="mt-3">
+                <input type="hidden" value="@Model.OgrenciId" name="id">
+                <button type="submit" class="btn btn-danger">Evet</button>
+                <a asp-action="Index" class="btn btn-primary">Hayır</a>
+            </form>
+        </p>
+    </div>
+</div>

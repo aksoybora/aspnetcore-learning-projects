@@ -1,0 +1,32 @@
+@model IEnumerable<KursKayit>
+
+@{
+    ViewData["Title"] = "Kurs Kayıtları";
+}
+
+<h2>Kurs Öğrenci Listesi</h2>
+<hr>
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th style="width: 50px;">@Html.DisplayNameFor(m => m.KayitId)</th>
+            <th>@Html.DisplayNameFor(m => m.Ogrenci.AdSoyad)</th>
+            <th>@Html.DisplayNameFor(m => m.Kurs.Baslik)</th>
+            <th style="width: 185px;">İşlem</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach(var item in Model)
+        {
+            <tr>
+                <td>@Html.DisplayFor(modelItem => item.KayitId)</td>
+                <td>@Html.DisplayFor(modelItem => item.Ogrenci.AdSoyad)</td>
+                <td>@Html.DisplayFor(modelItem => item.Kurs.Baslik)</td>
+                <td>
+                    <a asp-controller="KursKayit" asp-action="Edit" asp-route-id="@item.Ogrenci.OgrenciId" style="width: 100px; background-color: #CAE8BD" class="btn btn-sm btn-hover">Güncelle</a>
+                    <a asp-controller="KursKayit" asp-action="Delete" asp-route-id="@item.Ogrenci.OgrenciId" style="width: 55px; background-color: #FFC7A7" class="btn btn-sm">Sil</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

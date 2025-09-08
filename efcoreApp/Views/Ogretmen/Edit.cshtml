@@ -1,40 +1,43 @@
-@model Ogrenci
+@model Ogretmen
 
 @{
-    ViewData["Title"] = "Öğrenci Düzenle";
+    ViewData["Title"] = "Öğretmen Düzenle";
 }
 
 <div class="row">
     <div class="col-8">
-        <h2 class="mb-3">Öğrenci Güncelle</h2>
+        <h2 class="mb-3">Öğretmen Güncelle</h2>
         <hr>
 
-        <form asp-controller="Ogrenci" asp-action="Edit" method="post">
-            <input type="hidden" asp-for="OgrenciId">
+        <form asp-controller="Ogretmen" asp-action="Edit" method="post">
+            <input type="hidden" asp-for="OgretmenId">
             <div class="mb-3">
-                <label asp-for="OgrenciAd" class="form-label">Öğrenci Adı</label>
-                <input asp-for="OgrenciAd" class="form-control">
+                <label asp-for="Ad" class="form-label">Öğretmen Adı</label>
+                <input asp-for="Ad" class="form-control">
                     
-                <label asp-for="OgrenciSoyad" class="form-label mt-3">Öğrenci Soyadı</label>
-                <input asp-for="OgrenciSoyad" class="form-control">
+                <label asp-for="Soyad" class="form-label mt-3">Öğrenci Soyadı</label>
+                <input asp-for="Soyad" class="form-control">
                     
                 <label asp-for="Eposta" class="form-label mt-3">Eposta</label>
                 <input asp-for="Eposta" class="form-control">
                     
                 <label asp-for="Telefon" class="form-label mt-3">Telefon</label>
                 <input asp-for="Telefon" class="form-control">
+
+                <label asp-for="BaslamaTarihi" class="form-label mt-3">Başlama Tarihi</label>
+                <input asp-for="BaslamaTarihi" class="form-control">
             </div>
                 <button type="submit" class="btn mt-2" style="background-color: #CAE8BD;">Güncelle</button>
         </form>
     </div>
     <div class="col-4">
-        <h2>Kayıtlı Olunan Kurslar</h2>
+        <h2>Ders Verdiği Kurslar</h2>
         <hr>
-        <ul>
+        @* <ul>
             @foreach(var item in @Model.KursKayitları)
             {
                 <li>@item.Kurs.Baslik</li>
             }
-        </ul>
+        </ul> *@
     </div>
 </div>

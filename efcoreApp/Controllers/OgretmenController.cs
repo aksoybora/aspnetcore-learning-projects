@@ -4,45 +4,39 @@ using Microsoft.EntityFrameworkCore;
 
 namespace efcoreApp.Controllers
 {
-    public class KursController : Controller
+    public class OgretmenController : Controller
     {
+
         // Injection Yöntemi
         private readonly DataContext _context; // DataContext referansı
 
-        public KursController(DataContext context) // DataContext referansı
+        public OgretmenController(DataContext context) // DataContext referansı
         {
             _context = context;  // Gelen context'i sakla
         }
 
-
-
         public async Task<IActionResult> Index()
         {
-            var kurslar = await _context.Kurslar.ToListAsync();
-            return View(kurslar);
+            var ogretmenler = await _context.Ogretmenler.ToListAsync();
+            return View(ogretmenler);
         }
-
 
         public IActionResult Create()
         {
             return View();
         }
 
-
-
         [HttpPost]
-        public async Task<IActionResult> Create(Kurs model)
+        public async Task<IActionResult> Create(Ogretmen model)
         {
-            _context.Kurslar.Add(model); // DataContext üzerinden ekle
+            _context.Ogretmenler.Add(model); // DataContext üzerinden ekle
             await _context.SaveChangesAsync(); // Değişiklikleri kaydet
 
 
-            return RedirectToAction("Index", "Kurs");
+            return RedirectToAction("Index", "Ogretmen");
         }
 
-
-
-        // Güncelleme formu için id vasıtasıyla veritabanında ilgili kursun bulunup form üzerinde gösterilmesi.
+        // Güncelleme formu için id vasıtasıyla veritabanında ilgili öğrencininn bulunup form üzerinde gösterilmesi.
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -50,27 +44,23 @@ namespace efcoreApp.Controllers
                 return NotFound();
             }
 
-            var kurs = await _context
-                            .Kurslar
-                            .Include(k => k.KursKayitları)
-                            .ThenInclude(k => k.Ogrenci)
-                            .FirstOrDefaultAsync(k => k.KursId == id);
+            var ogretmen = await _context
+                            .Ogretmenler
+                            .FirstOrDefaultAsync(o => o.OgretmenId == id);
 
-            if (kurs == null)
+            if (ogretmen == null)
             {
                 return NotFound();
             }
 
-            return View(kurs);
+            return View(ogretmen);
         }
-
-
 
         [HttpPost]
         [ValidateAntiForgeryToken] // Formu get metoduyla görüntüleyen kişi ile post metoduyla güncelleyen kişinin aynı olup olmadığını token bilgisiyle kontrol eder. (Cross-side attack)
-        public async Task<IActionResult> Edit(int id, Kurs model)
+        public async Task<IActionResult> Edit(int id, Ogretmen model)
         {
-            if (id != model.KursId)
+            if (id != model.OgretmenId)
             {
                 return NotFound();
             }
@@ -82,9 +72,9 @@ namespace efcoreApp.Controllers
                     _context.Update(model);
                     await _context.SaveChangesAsync();
                 }
-                catch (DbUpdateException)
+                catch (DbUpdateConcurrencyException)
                 {
-                    if (!_context.Kurslar.Any(o => o.KursId == model.KursId))
+                    if (!_context.Ogretmenler.Any(o => o.OgretmenId == model.OgretmenId))
                     {
                         return NotFound();
                     }
@@ -99,8 +89,6 @@ namespace efcoreApp.Controllers
 
             return View(model);
         }
-        
-
 
         [HttpGet]
         public async Task<IActionResult> Delete(int? id)
@@ -110,14 +98,14 @@ namespace efcoreApp.Controllers
                 return NotFound();
             }
 
-            var kurs = await _context.Kurslar.FindAsync(id);
+            var silinecekOgretmen = await _context.Ogretmenler.FindAsync(id);
 
-            if (kurs == null)
+            if (silinecekOgretmen == null)
             {
                 return NotFound();
             }
 
-            return View(kurs);
+            return View(silinecekOgretmen);
         }
 
 
@@ -129,19 +117,18 @@ namespace efcoreApp.Controllers
                 return NotFound();
             }
 
-            var kurs = await _context.Kurslar.FindAsync(id);
+            var silinecekOgretmen = await _context.Ogretmenler.FindAsync(id);
 
-            if (kurs == null)
+            if (silinecekOgretmen == null)
             {
                 return NotFound();
             }
 
-            _context.Kurslar.Remove(kurs);
+            _context.Ogretmenler.Remove(silinecekOgretmen);
             await _context.SaveChangesAsync();
 
             return RedirectToAction("Index");
 
         }
-
     }
 }

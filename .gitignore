@@ -33,3 +33,23 @@ launchSettings.json
 # Node / npm dosyaları varsa (frontend)
 node_modules/
 
+# VS Code (editor ayarları)
+.vscode/
+
+# SQLite veritabanı dosyaları (EF Core geliştirme)
+*.db
+*.db-shm
+*.db-wal
+*.sqlite
+*.sqlite3
+
+# Test ve coverage çıktıları
+TestResults/
+coverage/
+*.coverage
+*.coveragexml
+
+# Ortam değişkeni dosyaları
+.env
+.env.*.local
+

@@ -20,5 +20,6 @@ namespace efcoreApp.Data
         public DbSet<Kurs> Kurslar => Set<Kurs>();
         public DbSet<Ogrenci> Ogrenciler => Set<Ogrenci>(); // Bu satır Ogrenci sınıfını Ogrenciler adında bir veritabanı tablosuyla eşler.
         public DbSet<KursKayit> KursKayitlari => Set<KursKayit>();
+        public DbSet<Ogretmen> Ogretmenler => Set<Ogretmen>();
     }
 }

@@ -1,0 +1,35 @@
+@model IEnumerable<Ogretmen>
+
+@{
+    ViewData["Title"] = "Öğretmenler";
+}
+
+<h2 class="mb-3">Öğretmenler</h2>
+<hr>
+
+<table class="table table-bordered table-striped">
+    <thead>
+        <tr>
+            <td style="width: 100px;">@Html.DisplayNameFor(m => m.OgretmenId)</td>
+            <td>@Html.DisplayNameFor(m => m.Ad)</td>
+            <td>@Html.DisplayNameFor(m => m.Soyad)</td>
+            <td>@Html.DisplayNameFor(m => m.BaslamaTarihi)</td>
+            <td></td>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach(var item in Model)
+        {
+            <tr>
+                <td>@Html.DisplayFor(modelItem => item.OgretmenId)</td>
+                <td>@Html.DisplayFor(modelItem => item.Ad)</td>
+                <td>@Html.DisplayFor(modelItem => item.Soyad)</td>
+                <td>@Html.DisplayFor(modelItem => item.BaslamaTarihi)</td>
+                <td style="width: 200px;">
+                    <a asp-controller="Ogretmen" asp-action="Edit" asp-route-id="@item.OgretmenId" style="width: 100px; background-color: #CAE8BD" class="btn btn-sm btn-hover">Güncelle</a>
+                    <a asp-controller="Ogretmen" asp-action="Delete" asp-route-id="@item.OgretmenId" style="width: 75px; background-color: #FFC7A7" class="btn btn-sm">Sil</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

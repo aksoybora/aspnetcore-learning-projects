@@ -1,6 +1,9 @@
 using Microsoft.AspNetCore.Mvc;
 using efcoreApp.Data;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Mvc.Rendering;
+using System.Threading.Tasks;
+using efcoreApp.Models;
 
 namespace efcoreApp.Controllers
 {
@@ -18,25 +21,30 @@ namespace efcoreApp.Controllers
 
         public async Task<IActionResult> Index()
         {
-            var kurslar = await _context.Kurslar.ToListAsync();
+            var kurslar = await _context.Kurslar.Include(k => k.Ogretmen).ToListAsync();
             return View(kurslar);
         }
 
 
-        public IActionResult Create()
+        public async Task<IActionResult> Create()
         {
+            ViewBag.Ogretmenler = new SelectList(await _context.Ogretmenler.ToListAsync(), "OgretmenId", "AdSoyad");
             return View();
         }
 
 
 
         [HttpPost]
-        public async Task<IActionResult> Create(Kurs model)
+        public async Task<IActionResult> Create(KursViewModel model)
         {
-            _context.Kurslar.Add(model); // DataContext üzerinden ekle
-            await _context.SaveChangesAsync(); // Değişiklikleri kaydet
+            if (ModelState.IsValid)
+            {
+                _context.Kurslar.Add(new Kurs { KursId = model.KursId, Baslik = model.Baslik, OgretmenId = model.OgretmenId });
+                await _context.SaveChangesAsync();
+                return RedirectToAction("Index");
+            }
 
-
+            ViewBag.Ogretmenler = new SelectList(await _context.Ogretmenler.ToListAsync(), "OgretmenId", "AdSoyad");
             return RedirectToAction("Index", "Kurs");
         }
 
@@ -54,6 +62,13 @@ namespace efcoreApp.Controllers
                             .Kurslar
                             .Include(k => k.KursKayitları)
                             .ThenInclude(k => k.Ogrenci)
+                            .Select(k => new KursViewModel
+                            {
+                                KursId = k.KursId,
+                                Baslik = k.Baslik,
+                                OgretmenId = k.OgretmenId,
+                                KursKayitları = k.KursKayitları
+                            })
                             .FirstOrDefaultAsync(k => k.KursId == id);
 
             if (kurs == null)
@@ -61,6 +76,7 @@ namespace efcoreApp.Controllers
                 return NotFound();
             }
 
+            ViewBag.Ogretmenler = new SelectList(await _context.Ogretmenler.ToListAsync(), "OgretmenId", "AdSoyad");
             return View(kurs);
         }
 
@@ -68,7 +84,7 @@ namespace efcoreApp.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken] // Formu get metoduyla görüntüleyen kişi ile post metoduyla güncelleyen kişinin aynı olup olmadığını token bilgisiyle kontrol eder. (Cross-side attack)
-        public async Task<IActionResult> Edit(int id, Kurs model)
+        public async Task<IActionResult> Edit(int id, KursViewModel model)
         {
             if (id != model.KursId)
             {
@@ -79,7 +95,7 @@ namespace efcoreApp.Controllers
             {
                 try
                 {
-                    _context.Update(model);
+                    _context.Update(new Kurs {KursId = model.KursId, Baslik = model.Baslik, OgretmenId = model.OgretmenId});
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateException)
@@ -97,6 +113,7 @@ namespace efcoreApp.Controllers
                 return RedirectToAction("Index");
             }
 
+            ViewBag.Ogretmenler = new SelectList(await _context.Ogretmenler.ToListAsync(), "OgretmenId", "AdSoyad");
             return View(model);
         }
         

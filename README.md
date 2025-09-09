@@ -1,12 +1,8 @@
 # 🚀 ASP.NET Core Projects
 
+<div style="max-width: 900px; margin: 0 auto;">
+
 This repository contains my ASP.NET Core learning projects and applications.
-
-## 📁 Projects
-
-- **Basics** - First ASP.NET Core MVC project
-- **MeetingApp** - Modern meeting management application with responsive UI
-- **DeviceFormApp** - A Form App What manage device products with category filtering, image uploads, and with a clean light/dark theme.
 
 ## 🛠️ Technologies
 
@@ -19,6 +15,46 @@ This repository contains my ASP.NET Core learning projects and applications.
 
 Learning and practicing ASP.NET Core development through building real applications.
 
+## 📸 Project Details
+
+### Basics
+First ASP.NET Core MVC project.
+
+<p>
+  <img src="images/basics.1.png" alt="Basics Screenshot 1" width="300" />
+  
+</p>
+
+### MeetingApp
+Modern meeting management application with responsive UI.
+
+<p>
+  <img src="images/MeetingApp.1.png" alt="MeetingApp Screenshot 1" width="300" />
+  <img src="images/MeetingApp.2.png" alt="MeetingApp Screenshot 2" width="300" />
+  <img src="images/MeetingApp.3.png" alt="MeetingApp Screenshot 3" width="300" />
+  <img src="images/MeetingApp.4.png" alt="MeetingApp Screenshot 4" width="300" />
+</p>
+
+### DeviceFormApp
+A Form App that manages device products with category filtering, image uploads, and a clean light/dark theme.
+
+<p>
+  <img src="images/DeviceFormApp.1.png" alt="DeviceFormApp Screenshot 1" width="300" />
+  <img src="images/DeviceFormApp.2.png" alt="DeviceFormApp Screenshot 2" width="300" />
+</p>
+
+### efcoreApp
+Completed. Learned Entity Framework Core and database-related topics (migrations, relationships, queries, seeding).
+
+<p>
+  <img src="images/efcoreApp.1.png" alt="efcoreApp Screenshot 1" width="300" />
+  <img src="images/efcoreApp.2.png" alt="efcoreApp Screenshot 2" width="300" />
+  <img src="images/efcoreApp.3.png" alt="efcoreApp Screenshot 3" width="300" />
+  <img src="images/efcoreApp.4.png" alt="efcoreApp Screenshot 4" width="300" />
+</p>
+
 ---
 
-*Learning ASP.NET Core step by step* 🎯 
+*Learning ASP.NET Core step by step* 🎯
+
+</div>

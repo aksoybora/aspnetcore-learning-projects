@@ -33,11 +33,11 @@
     <div class="col-4">
         <h2>Ders Verdiği Kurslar</h2>
         <hr>
-        @* <ul>
-            @foreach(var item in @Model.KursKayitları)
+        <ul>
+            @foreach(var item in @Model.Kurslar)
             {
-                <li>@item.Kurs.Baslik</li>
+                <li>@item.Baslik</li>
             }
-        </ul> *@
+        </ul>
     </div>
 </div>

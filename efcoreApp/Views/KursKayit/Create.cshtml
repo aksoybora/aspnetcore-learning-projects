@@ -10,12 +10,12 @@
 <form asp-controller="KursKayit" asp-action="Create" method="post">
     <div class="mb-3">
         <label asp-for="OgrenciId" class="form-label">Öğrenci</label>
-        <select asp-items="ViewBag.Ogrenciler" asp-for="OgrenciId" class="form-control">
+        <select asp-items="ViewBag.Ogrenciler" asp-for="OgrenciId" class="form-select">
             <option value="">Seçiniz</option>
         </select>
             
         <label asp-for="KursId" class="form-label mt-3">Kurs</label>
-        <select asp-items="ViewBag.Kurslar" asp-for="KursId" class="form-control">
+        <select asp-items="ViewBag.Kurslar" asp-for="KursId" class="form-select">
             <option value="">Seçiniz</option>
         </select>
 

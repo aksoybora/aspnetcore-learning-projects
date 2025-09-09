@@ -46,6 +46,7 @@ namespace efcoreApp.Controllers
 
             var ogretmen = await _context
                             .Ogretmenler
+                            .Include(o => o.Kurslar)
                             .FirstOrDefaultAsync(o => o.OgretmenId == id);
 
             if (ogretmen == null)

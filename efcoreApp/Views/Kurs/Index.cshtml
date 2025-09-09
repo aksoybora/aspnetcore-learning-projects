@@ -12,6 +12,7 @@
         <tr>
             <td style="width: 100px;">@Html.DisplayNameFor(m => m.KursId)</td>
             <td>@Html.DisplayNameFor(m => m.Baslik)</td>
+            <td>Öğretmen</td>
             <td></td>
         </tr>
     </thead>
@@ -21,6 +22,7 @@
             <tr>
                 <td>@Html.DisplayFor(modelItem => item.KursId)</td>
                 <td>@Html.DisplayFor(modelItem => item.Baslik)</td>
+                <td>@Html.DisplayFor(modelItem => item.Ogretmen.AdSoyad)</td>
                 <td style="width: 200px;">
                     <a asp-controller="Kurs" asp-action="Edit" asp-route-id="@item.KursId" style="width: 100px; background-color: #CAE8BD" class="btn btn-sm btn-hover">Güncelle</a>
                     <a asp-controller="Kurs" asp-action="Delete" asp-route-id="@item.KursId" style="width: 75px; background-color: #FFC7A7" class="btn btn-sm">Sil</a>

@@ -1,10 +1,10 @@
-@model List<Post>
+@model PostsViewModel
 
 <div class="row">
-    <div class="col-lg-8">
+    <div class="col-lg-9">
         <div class="bg-white p-4">
             <h1 class="h4 mb-4">Popular Posts</h1>
-            @foreach(var post in Model)
+            @foreach(var post in Model.Posts)
             {
                 <div class="card bg-transparent border-0 mb-3">
                     <div class="row">
@@ -13,7 +13,10 @@
                         </div>
                         <div class="col-8">
                             <h5><a href="#" class="btn-link fw-bold">@post.Title</a></h5>
-                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ad sapiente nostrum reprehenderit. Maxime quam assumenda est optio ut cupiditate? Quam sequi maxime, perspiciatis, officiis quos nam deleniti quod ipsam mollitia excepturi expedita dolor, nulla nostrum voluptate voluptatem dolorem. Harum ad maxime suscipit iure!</p>
+                            <p>
+                                <p>@post.Content</p>
+                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequatur ad similique ullam natus atque autem facilis, maxime sequi, neque eum blanditiis, quo pariatur voluptates rerum? Sapiente, dignissimos sequi commodi saepe magnam quo quaerat nesciunt voluptatibus necessitatibus nobis rem omnis ipsum molestias! Sequi, dicta quo!</p>
+                            </p>
                             <a href="#" class="badge bg-danger bg-opacity-10 text-danger mb-2 fw-bold">Web Development</a>
                         </div>
                     </div>
@@ -29,5 +32,21 @@
             </nav>
         </div>
     </div>
-    <div class="col-lg-4"></div>
+    <div class="col-lg-3">
+        <div class="card">
+            <div class="card-header">
+                <h5 class="cart-title">Tags</h5>
+            </div>
+            <div class="card-body">
+                <ul class="list-inline d-flex flex-wrap gap-2">
+                    @foreach(var tag in Model.Tags)
+                    {
+                        <li class="list-inline-item">
+                            <a class="btn btn-outline-secondary btn-sm">@tag.Text</a>
+                        </li>
+                    }
+                </ul>
+            </div>
+        </div>
+    </div>
 </div>

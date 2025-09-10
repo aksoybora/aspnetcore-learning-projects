@@ -33,6 +33,9 @@ launchSettings.json
 # Node / npm dosyaları varsa (frontend)
 node_modules/
 
+# LibMan ile indirilen kütüphaneler (tüm projeler için)
+**/wwwroot/lib/
+
 # VS Code (editor ayarları)
 .vscode/
 

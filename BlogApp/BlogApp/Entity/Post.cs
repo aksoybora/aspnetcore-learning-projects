@@ -4,8 +4,9 @@ namespace BlogApp.Entity;
 public class Post
 {
     public int PostId { get; set; }
-    public int? Title { get; set; }
-    public int? Content { get; set; }
+    public string? Title { get; set; }
+    public string? Content { get; set; }
+    public string? Image { get; set; }
     public DateTime PublishedOn { get; set; }
     public bool IsActive { get; set; }
     public int UserId { get; set; }

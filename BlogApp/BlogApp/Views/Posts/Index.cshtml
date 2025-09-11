@@ -1,7 +1,7 @@
 @model PostsViewModel
 
 <div class="row">
-    <div class="col-lg-9">
+    <div class="col-lg-8">
         <div class="bg-white p-4">
             <h1 class="h4 mb-4">Popular Posts</h1>
             @foreach(var post in Model.Posts)
@@ -12,11 +12,8 @@
                             <img src="~/img/@post.Image" class="img-fluid rounded" alt="">
                         </div>
                         <div class="col-8">
-                            <h5><a href="#" class="btn-link fw-bold">@post.Title</a></h5>
-                            <p>
-                                <p>@post.Content</p>
-                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequatur ad similique ullam natus atque autem facilis, maxime sequi, neque eum blanditiis, quo pariatur voluptates rerum? Sapiente, dignissimos sequi commodi saepe magnam quo quaerat nesciunt voluptatibus necessitatibus nobis rem omnis ipsum molestias! Sequi, dicta quo!</p>
-                            </p>
+                            <h5><a href="/posts/details/@post.Url" class="btn-link fw-bold">@post.Title</a></h5>
+                            <p>@post.Content</p>
                             <a href="#" class="badge bg-danger bg-opacity-10 text-danger mb-2 fw-bold">Web Development</a>
                         </div>
                     </div>
@@ -32,21 +29,8 @@
             </nav>
         </div>
     </div>
-    <div class="col-lg-3">
-        <div class="card">
-            <div class="card-header">
-                <h5 class="cart-title">Tags</h5>
-            </div>
-            <div class="card-body">
-                <ul class="list-inline d-flex flex-wrap gap-2">
-                    @foreach(var tag in Model.Tags)
-                    {
-                        <li class="list-inline-item">
-                            <a class="btn btn-outline-secondary btn-sm">@tag.Text</a>
-                        </li>
-                    }
-                </ul>
-            </div>
-        </div>
+    <div class="col-lg-4">
+        <vc:tags-menu></vc:tags-menu>
+        <vc:new-posts></vc:new-posts>
     </div>
 </div>

@@ -20,6 +20,25 @@ app.UseStaticFiles();
 
 SeedData.FillTestDatas(app);
 
-app.MapDefaultControllerRoute();
+// localhost://posts/react-dersleri
+// localhost://posts/php-dersleri
+// localhost://posts/tag/web-programlama
+
+app.MapControllerRoute(
+    name: "post_details",
+    pattern: "posts/details/{url}",
+    defaults: new { controller = "Posts", action = "Details" }
+);
+
+app.MapControllerRoute(
+    name: "posts_by_tag",
+    pattern: "posts/tag/{tag}",
+    defaults: new {controller = "Posts", action = "Index" }
+);
+
+app.MapControllerRoute(
+    name: "default",
+    pattern: "{controller=Posts}/{action=Index}/{id?}"
+);
 
 app.Run();

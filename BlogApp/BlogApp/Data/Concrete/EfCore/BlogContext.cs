@@ -9,10 +9,10 @@ namespace BlogApp.Data.Concrete.EfCore
         {
 
         }
-
-        public DbSet<Post> Posts => Set<Post>();
-        public DbSet<Comment> Comments => Set<Comment>();
-        public DbSet<Tag> Tags => Set<Tag>();
-        public DbSet<User> Users => Set<User>();
+        // DbSet<T>: EF Core'un tablolarla eşleştirdiği koleksiyonlar
+        public DbSet<Post> Posts => Set<Post>();     // Posts tablosu
+        public DbSet<Comment> Comments => Set<Comment>(); // Comments tablosu
+        public DbSet<Tag> Tags => Set<Tag>();        // Tags tablosu
+        public DbSet<User> Users => Set<User>();     // Users tablosu
     }
 }

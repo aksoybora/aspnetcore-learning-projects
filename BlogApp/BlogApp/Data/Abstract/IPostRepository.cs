@@ -10,5 +10,6 @@ namespace BlogApp.Data.Abstract
         IQueryable<Post> Posts { get; }
         // Yeni bir Post eklemek için sözleşme (uygulama Concrete katmanda yapılır).
         void CreatePost(Post post);
+        void EditPost(Post post);
     }
 }

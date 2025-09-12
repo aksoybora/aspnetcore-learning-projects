@@ -48,6 +48,7 @@ namespace BlogApp.Data.Concrete.EfCore
                     context.Posts.AddRange(
                         new Post {
                             Title = "Asp.net core",
+                            Description = "Asp.net core açıklaması",
                             Content = "ASP.NET Core ile modern, ölçeklenebilir web uygulamaları geliştiriyoruz. Middleware, dependency injection, routing, controller ve action yapıları anlaşılır örneklerle anlatılıyor. Entity Framework Core ile veri erişimi, migration yönetimi ve repository deseni uygulanıyor. Konfigürasyon, logging, hata işleme ve çevresel ayarlar tanıtılıyor. Minimal API ile MVC karşılaştırılıyor. Kimlik doğrulama, yetkilendirme, test stratejileri ve yayınlama senaryoları pratik ipuçlarıyla tamamlanıyor. Örnek kodlar ve yaklaşımlar sunuluyor.",
                             Url = "aspnet-core",
                             IsActive = true,
@@ -62,6 +63,7 @@ namespace BlogApp.Data.Concrete.EfCore
                         },
                         new Post {
                             Title = "Php",
+                            Description = "Php açıklaması",
                             Content = "PHP ile dinamik web geliştirmeye sağlam bir başlangıç yapıyoruz. Söz dizimi, fonksiyonlar, diziler, nesne yönelimli programlama ve hata ayıklama adım adım inceleniyor. PDO ile güvenli veritabanı işlemleri, hazırlıklı ifadeler ve transaction yönetimi uygulanıyor. Composer, PSR standartları ve autoloading tanıtılıyor. Form doğrulama, oturum yönetimi, RESTful servisler, güvenlik ipuçları ve dağıtım stratejileri pratik bir blog projesiyle pekiştiriliyor. gerçek dünya örnekleri eşliğinde anlatılıyor.",
                             Url = "php",
                             IsActive = true,
@@ -72,6 +74,7 @@ namespace BlogApp.Data.Concrete.EfCore
                         },
                         new Post {
                             Title = "Django",
+                            Description = "Django açıklaması",
                             Content = "Django ile hızlı, güvenli ve bakımı kolay web uygulamaları geliştiriyoruz. Proje yapısı, uygulama kavramı, URL yönlendirme ve view katmanı net biçimde açıklanıyor. MTV akışı, ORM sorguları, migration süreçleri ve admin paneli özelleştirme ele alınıyor. Formlar, doğrulama, kimlik doğrulama ve yetkilendirme işleniyor. Class-based ve generic views yaklaşımları, test yazımı, ortam ayarları ve dağıtım stratejileri uygulanıyor. örnek kodlarla en iyi kalıplar paylaşılıyor.",
                             Url = "django",
                             IsActive = true,
@@ -83,6 +86,7 @@ namespace BlogApp.Data.Concrete.EfCore
                         ,
                         new Post {
                             Title = "React Dersleri",
+                            Description = "React açıklaması",
                             Content = "React ile bileşen tabanlı arayüz geliştirmeyi temelden ileri seviyeye taşıyoruz. JSX, props, state, lifecycle mantığı ve fonksiyon bileşenleri açıklanıyor. Hooks, context ve custom hook tasarımıyla tekrar kullanılabilirlik sağlanıyor. Formlar, doğrulama, veri çekme, loading durumları ve hata sınırları işleniyor. performans için memoization, useMemo, useCallback ve kod bölme öğretiliyor. Router, test stratejileri ve erişilebilirlik en iyi uygulamalarla anlatılıyor. gerçek proje örnekleriyle pekiştiriliyor.",
                             Url = "react-dersleri",
                             IsActive = true,
@@ -94,6 +98,7 @@ namespace BlogApp.Data.Concrete.EfCore
                         ,
                         new Post {
                             Title = "Angular",
+                            Description = "Angular açıklaması",
                             Content = "Angular ile güçlü, tip güvenli tek sayfa uygulamaları geliştiriyoruz. Modüller, bileşenler, şablon sözdizimi, veri bağlama ve pipe kullanımı anlatılıyor. Dependency injection, servisler, RxJS ve observable tabanlı akışlar uygulanıyor. Router, guard ve resolver ile gezinme tasarlanıyor. Reactive Forms, doğrulama ve dinamik formlar işleniyor. HttpClient, interceptor, hata yönetimi ve performans odaklı değişiklik algılama stratejileri; test, erişilebilirlik ve dağıtım pratikleriyle tamamlanıyor. örneklerle anlatılıyor.",
                             Url = "angular",
                             IsActive = true,
@@ -105,6 +110,7 @@ namespace BlogApp.Data.Concrete.EfCore
                         ,
                         new Post {
                             Title = "Web Tasarım",
+                            Description = "Web tasarım açıklaması",
                             Content = "Web tasarım ilkeleriyle kullanıcı odaklı, erişilebilir ve hızlı arayüzler tasarlıyoruz. Tipografi, renk kuramı, kontrast, boşluk kullanımı ve görsel hiyerarşi konu ediliyor. Responsive grid sistemleri, mobil öncelikli yaklaşım ve modern CSS teknikleri uygulanıyor. Bileşen tabanlı tasarım, yeniden kullanılabilirlik ve tasarım sistemleri kuruluyor. Performans optimizasyonu, görsel sıkıştırma, lazy loading ve Core Web Vitals ölçümü; kullanılabilirlik testleri ve mikro etkileşimlerle pekiştiriliyor. örneklerle anlatılıyor.",
                             Url = "web-tasarim",
                             IsActive = true,

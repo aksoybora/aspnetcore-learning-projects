@@ -7,15 +7,18 @@ namespace BlogApp.Data.Concrete.EfCore
     {
         public static void FillTestDatas(IApplicationBuilder app)
         {
+            // Scoped bir BlogContext örneği alıyoruz
             var context = app.ApplicationServices.CreateScope().ServiceProvider.GetService<BlogContext>();
 
             if(context != null)
             {
+                // Bekleyen migration varsa uyguluyoruz
                 if(context.Database.GetPendingMigrations().Any())
                 {
                     context.Database.Migrate();
                 }
 
+                // Örnek tag verileri
                 if(!context.Tags.Any())
                 {
                     context.Tags.AddRange(
@@ -28,15 +31,18 @@ namespace BlogApp.Data.Concrete.EfCore
                     context.SaveChanges();
                 }
 
+                // Örnek kullanıcı verileri (demo amaçlı düz şifre)
                 if(!context.Users.Any())
                 {
                     context.Users.AddRange(
-                        new User { UserName = "sadikturan", Image = "p1.jpg"},
-                        new User { UserName = "ahmetyilmaz", Image = "p2.jpg"}
+
+                        new User { UserName = "sadikturan", Name = "Sadık Turan", Email = "info@sadikturan.com", Password="123456", Image = "p1.jpg"},
+                        new User { UserName = "cinarturan", Name = "Çınar Turan", Email = "info@cinarturan.com", Password="123456", Image = "p2.jpg"}
                     );
                     context.SaveChanges();
                 }
 
+                // Örnek post verileri ve ilişkili yorumlar
                 if(!context.Posts.Any())
                 {
                     context.Posts.AddRange(

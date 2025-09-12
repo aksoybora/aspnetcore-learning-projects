@@ -1,0 +1,27 @@
+@model LoginViewModel
+
+<div class="row">
+    <div class="col-4 mx-auto">
+            <h2>Login</h2>
+            <hr>
+            @* Login POST isteği *@
+            <form action="Login" method="post">
+                @* Model doğrulama hataları burada listelenir *@
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="mb-3">
+                    @* E-posta alanı *@
+                    <label asp-for="Email" class="form-label"></label>
+                    <input asp-for="Email" class="form-control">
+                    <span asp-validation-for="Email" class="text-danger"></span>
+                </div>
+                <div class="mb-3">
+                    @* Parola alanı *@
+                    <label asp-for="Password" class="form-label"></label>
+                    <input asp-for="Password" class="form-control">
+                    <span asp-validation-for="Password" class="text-danger"></span>
+                </div>
+                <button type="submit" class="btn btn-primary">Login</button>
+            </form>
+        </div>
+    </div>
+</div>

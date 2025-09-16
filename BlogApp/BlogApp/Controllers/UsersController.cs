@@ -1,3 +1,4 @@
+// UsersController: Kullanıcı giriş/çıkış, kayıt ve profil görüntüleme işlemlerini yönetir.
 using System.Security.Claims;
 using BlogApp.Data.Abstract;
 using BlogApp.Data.Concrete.EfCore;
@@ -18,13 +19,13 @@ namespace BlogApp.Controllers
         {
             _userRepository = userRepository;
         }
-       
+
         public IActionResult Login()
         {
             // Login formunu gösterir
-            if(User.Identity!.IsAuthenticated) // Oturum açılmışsa (cookie bilgisi varsa) direk index ana sayfasına yönlendirilir.
+            if (User.Identity!.IsAuthenticated) // Oturum açılmışsa (cookie bilgisi varsa) direk index ana sayfasına yönlendirilir.
             {
-                return RedirectToAction("Index","Posts");
+                return RedirectToAction("Index", "Posts");
             }
             return View();
         }
@@ -37,13 +38,14 @@ namespace BlogApp.Controllers
         [HttpPost]
         public async Task<IActionResult> Register(RegisterViewModel model)
         {
-            if(ModelState.IsValid)
+            if (ModelState.IsValid)
             {
                 var user = await _userRepository.Users.FirstOrDefaultAsync(x => x.UserName == model.UserName || x.Email == model.Email);
-                if(user == null)
+                if (user == null)
                 {
-                    _userRepository.CreateUser(new User {
-                        UserName  = model.UserName,
+                    _userRepository.CreateUser(new User
+                    {
+                        UserName = model.UserName,
                         Name = model.Name,
                         Email = model.Email,
                         Password = model.Password,
@@ -68,12 +70,12 @@ namespace BlogApp.Controllers
         [HttpPost]
         public async Task<IActionResult> Login(LoginViewModel model)
         {
-            if(ModelState.IsValid)  
+            if (ModelState.IsValid)
             {
                 // Basit doğrulama: e-posta ve şifre eşleşmesini kontrol eder
                 var isUser = _userRepository.Users.FirstOrDefault(x => x.Email == model.Email && x.Password == model.Password);
 
-                if(isUser != null)
+                if (isUser != null)
                 {
                     // Kullanıcıya ait claim listesi hazırlanır
                     var userClaims = new List<Claim>();
@@ -83,16 +85,16 @@ namespace BlogApp.Controllers
                     userClaims.Add(new Claim(ClaimTypes.GivenName, isUser.Name ?? ""));
                     userClaims.Add(new Claim(ClaimTypes.UserData, isUser.Image ?? ""));
 
-                    if (isUser.Email == "info@sadikturan.com")
+                    if (isUser.Email == "info@aksoybora.com")
                     {
                         // Örnek: belirli e-posta için admin rolünü ekle
                         userClaims.Add(new Claim(ClaimTypes.Role, "admin"));
-                    } 
+                    }
 
                     // Cookie kimliği oluşturulur
                     var claimsIdentity = new ClaimsIdentity(userClaims, CookieAuthenticationDefaults.AuthenticationScheme);
 
-                    var authProperties = new AuthenticationProperties 
+                    var authProperties = new AuthenticationProperties
                     {
                         IsPersistent = true
                     };
@@ -103,22 +105,42 @@ namespace BlogApp.Controllers
                     // Yeni oturum aç
                     await HttpContext.SignInAsync(
                         CookieAuthenticationDefaults.AuthenticationScheme,
-                        new ClaimsPrincipal(claimsIdentity), 
+                        new ClaimsPrincipal(claimsIdentity),
                         authProperties);
 
                     // Başarılı giriş sonrası ana sayfaya yönlendir
-                    return RedirectToAction("Index","Posts");
+                    return RedirectToAction("Index", "Posts");
                 }
                 else
                 {
                     // Hata mesajı göster
                     ModelState.AddModelError("", "Kullanıcı adı veya şifre yanlış");
                 }
-            } 
-            
+            }
+
             return View(model);
         }
        
+       
+        public IActionResult Profile(string  username)
+        {
+            if(string.IsNullOrEmpty(username))
+            {
+                return NotFound();
+            }
+            var user = _userRepository
+                        .Users
+                        .Include(x => x.Posts)
+                        .Include(x => x.Comments)
+                        .ThenInclude(x => x.Post)
+                        .FirstOrDefault(x => x.UserName == username);
+
+            if(user == null)
+            {
+                return NotFound();
+            }
+            return View(user);
+        }       
        
     }
 }

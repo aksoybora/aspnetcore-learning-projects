@@ -1,4 +1,6 @@
+// PostCreateViewModel: Gönderi oluşturma/düzenleme formları için kullanılan model.
 using System.ComponentModel.DataAnnotations;
+using BlogApp.Entity;
 
 namespace BlogApp.Models
 {
@@ -7,19 +9,20 @@ namespace BlogApp.Models
         public int PostId { get; set; }
         [Required]
         [Display(Name = "Başlık")]
-        public string? Title { get; set;}
+        public string? Title { get; set; }
 
-        [Required]  
+        [Required]
         [Display(Name = "Açıklama")]
         public string? Description { get; set; }
 
-        [Required]  
+        [Required]
         [Display(Name = "İçerik")]
         public string? Content { get; set; }
 
-        [Required]  
+        [Required]
         [Display(Name = "Url")]
         public string? Url { get; set; }
         public bool IsActive { get; set; }
+        public List<Tag> Tags { get; set; } = new();
     }
 }

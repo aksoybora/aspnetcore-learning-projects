@@ -1,3 +1,4 @@
+// EfTagRepository: ITagRepository'nin EF Core implementasyonu (Tag ekleme/sorgu).
 using BlogApp.Data.Abstract;
 using BlogApp.Data.Concrete.EfCore;
 using BlogApp.Entity;

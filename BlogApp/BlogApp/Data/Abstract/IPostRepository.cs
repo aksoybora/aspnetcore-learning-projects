@@ -1,3 +1,4 @@
+// IPostRepository: Post varlığı için sorgulama ve CRUD sözleşmesini tanımlar.
 using BlogApp.Entity;
 
 namespace BlogApp.Data.Abstract
@@ -11,5 +12,6 @@ namespace BlogApp.Data.Abstract
         // Yeni bir Post eklemek için sözleşme (uygulama Concrete katmanda yapılır).
         void CreatePost(Post post);
         void EditPost(Post post);
+        void EditPost(Post post, int[] tagIds);
     }
 }

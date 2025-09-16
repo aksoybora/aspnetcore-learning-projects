@@ -1,3 +1,4 @@
+// IUserRepository: Kullanıcılar için sorgulama ve ekleme sözleşmesini tanımlar.
 using BlogApp.Entity;
 
 namespace BlogApp.Data.Abstract

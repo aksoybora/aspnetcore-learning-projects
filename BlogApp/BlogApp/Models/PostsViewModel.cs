@@ -1,3 +1,4 @@
+// PostsViewModel: Liste sayfasında post ve etiketleri taşımak için kullanılan model.
 using BlogApp.Entity;
 
 namespace BlogApp.Models

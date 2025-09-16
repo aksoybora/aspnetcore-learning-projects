@@ -1,3 +1,4 @@
+// TagsMenu ViewComponent: Tüm etiketleri listeleyen menü bileşeni.
 using BlogApp.Data.Abstract;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;

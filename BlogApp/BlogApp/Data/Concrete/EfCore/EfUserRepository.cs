@@ -1,3 +1,4 @@
+// EfUserRepository: IUserRepository'nin EF Core implementasyonu (Kullanıcı ekleme/sorgu).
 using BlogApp.Data.Abstract;
 using BlogApp.Data.Concrete.EfCore;
 using BlogApp.Entity;

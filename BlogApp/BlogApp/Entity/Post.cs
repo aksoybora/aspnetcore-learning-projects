@@ -1,3 +1,4 @@
+// Post: Blog gönderisi varlığı. Kullanıcı, Etiket ve Yorum ilişkileri içerir.
 using System;
 
 namespace BlogApp.Entity;

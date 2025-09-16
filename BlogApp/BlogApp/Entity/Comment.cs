@@ -1,3 +1,4 @@
+// Comment: Bir gönderiye ait kullanıcı yorumunu temsil eder.
 using System;
 
 namespace BlogApp.Entity;

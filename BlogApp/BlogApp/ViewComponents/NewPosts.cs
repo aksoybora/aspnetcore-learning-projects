@@ -1,3 +1,4 @@
+// NewPosts ViewComponent: Son eklenen gönderileri (5 adet) listeleyen bileşen.
 using BlogApp.Data.Abstract;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;

@@ -1,3 +1,4 @@
+// User: Uygulama kullanıcısı varlığı. Gönderiler ve yorumlarla ilişkilidir.
 using System;
 
 namespace BlogApp.Entity;

@@ -1,3 +1,4 @@
+// Program.cs: Uygulamanın başlangıç noktası. DI, EF Core, Authentication ve routing yapılandırmaları burada yapılır.
 using BlogApp.Data.Concrete.EfCore;
 using Microsoft.EntityFrameworkCore;
 using BlogApp.Data.Abstract;
@@ -39,6 +40,12 @@ SeedData.FillTestDatas(app);
 // localhost://posts/react-dersleri
 // localhost://posts/php-dersleri
 // localhost://posts/tag/web-programlama
+
+app.MapControllerRoute(
+    name: "user_profile",
+    pattern: "profile/{username}",
+    defaults: new {controller = "Users", action = "Profile" }
+);
 
 app.MapControllerRoute(
     name: "post_details",

@@ -53,6 +53,40 @@ Completed. Learned Entity Framework Core and database-related topics (migrations
   <img src="images/efcoreApp.4.png" alt="efcoreApp Screenshot 4" width="300" />
 </p>
 
+### BlogApp
+Completed. A simple blog app with posts, tags, users, and comments. Uses cookie-based auth, Repository pattern, and EF Core with Sqlite.
+
+<p>
+  <img src="images/BlogApp_1.png" alt="BlogApp Screenshot 1" width="300" />
+  <img src="images/BlogApp_2.png" alt="BlogApp Screenshot 2" width="300" />
+  <img src="images/BlogApp_3.png" alt="BlogApp Screenshot 3" width="300" />
+  <img src="images/BlogApp_4.png" alt="BlogApp Screenshot 4" width="300" />
+  <img src="images/BlogApp_5.png" alt="BlogApp Screenshot 5" width="300" />
+  <img src="images/BlogApp_6.png" alt="BlogApp Screenshot 6" width="300" />
+</p>
+
+Folder Schema (overview):
+
+```
+BlogApp/
+  BlogApp/
+    Controllers/        -> MVC controllers (PostsController, UsersController)
+    Data/
+      Abstract/         -> Interfaces (IPostRepository, ITagRepository, IUserRepository, ICommentRepository)
+      Concrete/
+        EfCore/         -> EF Core context and repository implementations (BlogContext, Ef*Repository, SeedData)
+    Entity/             -> Entity classes (Post, Tag, User, Comment)
+    Models/             -> ViewModels (LoginViewModel, RegisterViewModel, PostCreateViewModel, PostsViewModel)
+    ViewComponents/     -> Reusable UI components (TagsMenu, NewPosts)
+    Views/              -> Razor views
+    wwwroot/            -> Static assets (img, css, lib)
+    Program.cs          -> App startup, DI, routing, auth
+```
+
+### Data Disclaimer
+- All person and content names, images, emails, and any data used across these projects are purely fictional and for testing/learning purposes only.
+- They have no relation to real people or real data.
+
 ---
 
 *Learning ASP.NET Core step by step* 🎯

@@ -1,3 +1,4 @@
+// LoginViewModel: Kullanıcı giriş formu için doğrulama anotasyonlarıyla kullanılan model.
 using System.ComponentModel.DataAnnotations;
 
 namespace BlogApp.Models

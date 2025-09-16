@@ -1,3 +1,4 @@
+// Tag: Gönderileri kategorize etmek için etiket varlığı. Renk ve URL içerir.
 using System;
 
 namespace BlogApp.Entity;

@@ -1,3 +1,4 @@
+// RegisterViewModel: Kullanıcı kayıt formu için doğrulama anotasyonlarıyla kullanılan model.
 using System.ComponentModel.DataAnnotations;
 
 namespace BlogApp.Models

@@ -1,3 +1,4 @@
+// BlogContext: EF Core DbContext. Veritabanı tablolarını (DbSet) ve bağlantıyı yönetir.
 using BlogApp.Entity;
 using Microsoft.EntityFrameworkCore;
 

@@ -1,3 +1,4 @@
+// SeedData: Geliştirme ortamı için başlangıç (örnek) verilerini veritabanına yükler.
 using BlogApp.Entity;
 using Microsoft.EntityFrameworkCore;
 

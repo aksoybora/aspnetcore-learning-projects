@@ -1,3 +1,4 @@
+// EfCommentRepository: ICommentRepository'nin EF Core implementasyonu (Yorum ekleme/sorgu).
 using BlogApp.Data.Abstract;
 using BlogApp.Data.Concrete.EfCore;
 using BlogApp.Entity;

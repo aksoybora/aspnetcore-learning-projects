@@ -6,7 +6,7 @@ namespace IdentityApp.Models
     public static class IdentitySeedData
     {
         // Uygulama ilk açıldığında test amaçlı bir yönetici (Admin) kullanıcısı oluşturmak için kullanılır.
-        private const string adminUser = "Admin";
+        private const string adminUser = "admin";
         private const string adminPassword = "Admin_123";
 
         // Uygulama başlangıcında Program.cs içinden çağrılır.
@@ -25,14 +25,15 @@ namespace IdentityApp.Models
             }
 
             // Identity kullanıcı işlemleri için UserManager servisini alıyoruz.
-            var userManager = app.ApplicationServices.CreateScope().ServiceProvider.GetRequiredService<UserManager<IdentityUser>>();
+            var userManager = app.ApplicationServices.CreateScope().ServiceProvider.GetRequiredService<UserManager<AppUser>>();
 
             var user = await userManager.FindByNameAsync(adminUser);
 
             // Admin kullanıcısı yoksa yeni bir kullanıcı oluştur ve parola ata.
             if(user == null)
             {
-                user = new IdentityUser {
+                user = new AppUser {
+                    FullName = "Sadık Turan",
                     UserName = adminUser,
                     Email = "admin@sadikturan.com",
                     PhoneNumber = "44444444"                    

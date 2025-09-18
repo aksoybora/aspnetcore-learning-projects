@@ -1,4 +1,4 @@
-@model IEnumerable<IdentityUser>
+@model IEnumerable<AppUser>
 
 <div class="row">
     <div class="col-10">
@@ -15,7 +15,7 @@
             <th>Id</th>
             <th>Name</th>
             <th>Email</th>
-            <th>Option</th>
+            <th style="width: 120px;">Option</th>
         </tr>
     </thead>
     <tbody>
@@ -23,11 +23,14 @@
         {
             <tr>
                 <td>@user.Id</td>
-                <td>@user.UserName</td>
+                <td>@user.FullName</td>
                 <td>@user.Email</td>
                 <td>
-                    <a href="" class="btn btn-primary btn-sm">Edit</a>
-                    <a href="" class="btn btn-danger btn-sm">Delete</a>
+                    <a asp-action="Edit" asp-route-id="@user.Id" class="btn btn-primary btn-sm">Edit</a>
+                    <form asp-action="Delete" method="post" onsubmit="return confirm('Are you sure for delete this user?')" style="display: inline-block;">
+                        <input type="hidden" value="@user.Id" name="id">
+                        <button type="submit" class="btn btn-danger btn-sm">Delete</button>
+                    </form>
                 </td>
             </tr>
         }

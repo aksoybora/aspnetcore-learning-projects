@@ -11,11 +11,13 @@ namespace IdentityApp.ViewModels
         public string? Email { get; set; }
 
         [DataType(DataType.Password)]
-        public string? Password { get; set; } 
+        public string? Password { get; set; }
 
         [DataType(DataType.Password)]
         [Compare("Password", ErrorMessage = "Passwords don't match!")]
         public string? ConfirmPassword { get; set; }
+        public IList<string>? SelectedRoles { get; set; }
+
 
     } 
 }

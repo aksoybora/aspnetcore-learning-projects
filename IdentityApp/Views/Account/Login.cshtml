@@ -1,0 +1,29 @@
+@model LoginViewModel
+
+<div class="card col-7 mx-auto mt-5 shadow rounded-3 border border-primary ">
+    <div class="card-header text-primary-emphasis bg-primary-subtle">
+        <h2>Login</h2>
+    </div>
+    <div class="card-body p-4">
+        <form asp-action="Login" method="post">
+            <div asp-validation-summary="All" class="text-danger"></div>
+            
+            <div class="mb-3">
+                <label asp-for="Email"></label>
+                <input asp-for="Email" class="form-control">
+            </div>
+
+            <div class="mb-3">
+                <label asp-for="Password"></label>
+                <input asp-for="Password" class="form-control">
+            </div>
+
+            <div class="form-check mb-3">
+                <input asp-for="RememberMe" class="form-check-input">
+                <label asp-for="RememberMe" class="form-check-label"> Remember me</label>
+            </div>
+        
+            <button type="submit" class="btn text-primary-emphasis bg-primary-subtle border border-primary d-block mx-auto w-25 shadow-sm rounded-2">Login</button>
+        </form>
+    </div>
+</div>

@@ -31,7 +31,7 @@
             <td asp-role-users="@role.Id"></td>
             <td>
                 <form method="post">
-                    <a class="btn text-primary-emphasis bg-primary-subtle border border-primary btn-sm">Edit</a>
+                    <a class="btn text-primary-emphasis bg-primary-subtle border border-primary btn-sm" asp-action="Edit" asp-route-id="@role.Id">Edit</a>
                     <button type="submit" class="btn btn-sm text-danger-emphasis bg-danger-subtle border border-danger">Delete</button>
                 </form>
             </td>

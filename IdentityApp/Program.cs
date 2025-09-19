@@ -13,7 +13,8 @@ builder.Services.AddDbContext<IdentityContext>(
 builder.Services.AddIdentity<AppUser, AppRole>()
     .AddEntityFrameworkStores<IdentityContext>();
 
-builder.Services.Configure<IdentityOptions>(options => {
+builder.Services.Configure<IdentityOptions>(options =>
+{
     options.Password.RequiredLength = 6;
     options.Password.RequireNonAlphanumeric = false;
     options.Password.RequireLowercase = false;
@@ -22,6 +23,16 @@ builder.Services.Configure<IdentityOptions>(options => {
 
     options.User.RequireUniqueEmail = true;
     // options.User.AllowedUserNameCharacters = "abcdefghijklmnopqrstuvwxyz";
+    
+    options.Lockout.DefaultLockoutTimeSpan = TimeSpan.FromMinutes(5); // 5 dk kilitle 5 kere yanlış giriş yaparsa.
+    options.Lockout.MaxFailedAccessAttempts = 5; // Kilitlenme için yanlış giriş sayısı
+});
+
+    builder.Services.ConfigureApplicationCookie(options => {
+    options.LoginPath = "/Account/Login";
+    options.AccessDeniedPath = "/Account/AccessDenied";
+    options.SlidingExpiration = true;
+    options.ExpireTimeSpan = TimeSpan.FromDays(30); // Cookie 30 gün boyunca kalacak.
 });
 
 var app = builder.Build();
@@ -37,6 +48,7 @@ if (!app.Environment.IsDevelopment())
 app.UseHttpsRedirection();
 app.UseRouting();
 
+app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapStaticAssets();

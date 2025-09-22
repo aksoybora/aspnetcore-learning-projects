@@ -3,9 +3,12 @@ using Microsoft.AspNetCore.Mvc;
 using IdentityApp.ViewModels;
 using IdentityApp.Models;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Authorization;
+
 
 namespace IdentityApp.Controllers
 {
+    [Authorize(Roles = "Admin")]
     public class UsersController : Controller
     {
         private UserManager<AppUser> _userManager;
@@ -20,35 +23,6 @@ namespace IdentityApp.Controllers
         public IActionResult Index()
         {
             return View(_userManager.Users);
-        }
-
-
-        public IActionResult Create()
-        {
-            return View();
-        }
-
-
-        [HttpPost]
-        public async Task<IActionResult> Create(CreateViewModel model)
-        {
-            if (ModelState.IsValid)
-            {
-                var user = new AppUser { UserName = model.UserName, Email = model.Email, FullName = model.FullName };
-
-                IdentityResult result = await _userManager.CreateAsync(user, model.Password);
-
-                if (result.Succeeded)
-                {
-                    return RedirectToAction("Index");
-                }
-
-                foreach (IdentityError err in result.Errors)
-                {
-                    ModelState.AddModelError("", err.Description);
-                }
-            }
-            return View(model);
         }
 
 
@@ -106,7 +80,7 @@ namespace IdentityApp.Controllers
                     if (result.Succeeded)
                     {
                         await _userManager.RemoveFromRolesAsync(user, await _userManager.GetRolesAsync(user));
-                        if(model.SelectedRoles != null)
+                        if (model.SelectedRoles != null)
                         {
                             await _userManager.AddToRolesAsync(user, model.SelectedRoles);
                         }
@@ -123,14 +97,14 @@ namespace IdentityApp.Controllers
 
             return View(model);
         }
-        
+
 
         [HttpPost]
         public async Task<IActionResult> Delete(string id)
         {
             var user = await _userManager.FindByIdAsync(id);
 
-            if(user != null)
+            if (user != null)
             {
                 await _userManager.DeleteAsync(user);
             }

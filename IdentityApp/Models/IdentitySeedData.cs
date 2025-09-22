@@ -33,9 +33,9 @@ namespace IdentityApp.Models
             if(user == null)
             {
                 user = new AppUser {
-                    FullName = "Sadık Turan",
+                    FullName = "Sacit Neman",
                     UserName = adminUser,
-                    Email = "admin@sadikturan.com",
+                    Email = "admin@sacitneman.com",
                     PhoneNumber = "44444444"                    
                 };
 

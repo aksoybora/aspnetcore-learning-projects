@@ -38,6 +38,7 @@ Identity management project covering authentication, authorization, roles, and a
   <img src="images/IdentityApp_1.png" alt="IdentityApp Screenshot 1" width="400" />
   <img src="images/IdentityApp_2.png" alt="IdentityApp Screenshot 2" width="400" />
   <img src="images/IdentityApp_3.png" alt="IdentityApp Screenshot 3" width="400" />
+  <img src="images/IdentityApp_4.png" alt="IdentityApp Screenshot 4" width="400" />
 </p>
 
 ### BlogApp
